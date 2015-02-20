@@ -32,7 +32,7 @@ else:
 
 # SQLALchemy database URI
 if os.environ.get('DATABASE_URL') is None:
-    DATABASE = 'easyama.db'
+    DATABASE = 'redditdrafts.db'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + \
         os.path.join(basedir, DATABASE) + \
         '?check_same_thread=False'
@@ -59,7 +59,7 @@ else:
 # reddit
 if os.environ.get('REDDIT_USER_AGENT') is None:
     REDDIT_USER_AGENT = "your app name ver 0.1 by /u/your_user_name, "\
-        "https://github.com/davedg629/amapro_v1"
+        "https://github.com/davedg629/redditdrafts"
 else:
     REDDIT_USER_AGENT = os.environ.get('REDDIT_USER_AGENT')
 

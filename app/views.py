@@ -5,7 +5,7 @@ from app.forms import ThreadForm, DeleteThreadForm, CaptchaForm
 from app.models import Thread, User
 from flask.ext.login import login_user, logout_user, \
     login_required, current_user
-from app.utils import generate_token, reddit_body
+from app.utils import generate_token
 from sqlalchemy import desc
 import praw
 
@@ -90,21 +90,12 @@ def logout():
     return redirect(url_for('index'))
 
 
-# how it works
-@app.route("/how-it-works")
-def how_it_works():
-    return render_template(
-        'how-it-works.html',
-        page_title="How It Works"
-    )
-
-
 # homepage
 @app.route("/")
 def index():
     return render_template(
         'index.html',
-        page_title="Ready to create a reddit AMA? Read this first."
+        page_title="Please read before using redditDrafts"
     )
 
 
@@ -149,7 +140,6 @@ def create_thread():
             user_id=g.user.id,
             title=form.title.data,
             body=form.body.data,
-            verification=form.verification.data,
             subreddit=form.subreddit.data,
         )
         db.session.add(new_thread)
@@ -162,7 +152,7 @@ def create_thread():
 
     return render_template(
         'create-thread.html',
-        page_title="Create your reddit AMA",
+        page_title="Create your post",
         form=form
     )
 
@@ -179,7 +169,7 @@ def preview(thread_id):
         return render_template(
             'preview.html',
             thread=thread,
-            page_title="Preview Your AMA"
+            page_title="Preview your post"
         )
     elif thread.submitted is True:
         return redirect(url_for(
@@ -200,7 +190,7 @@ def share(thread_id):
         return render_template(
             'share.html',
             thread=thread,
-            page_title="AMA Preview"
+            page_title="Reddit post preview"
         )
     else:
         abort(404)
@@ -219,7 +209,6 @@ def edit(thread_id):
         if form.validate_on_submit():
             thread.title = form.title.data
             thread.body = form.body.data
-            thread.verification = form.verification.data
             thread.subreddit = form.subreddit.data
             db.session.commit()
             return redirect(url_for(
@@ -229,7 +218,7 @@ def edit(thread_id):
         return render_template(
             'edit.html',
             form=form,
-            page_title="Edit Your AMA"
+            page_title="Edit your post"
         )
     elif thread.submitted is True:
         return redirect(url_for(
@@ -271,10 +260,7 @@ def success(thread_id):
                     reddit_post = r.submit(
                         thread.subreddit,
                         thread.title,
-                        reddit_body(
-                            thread.body,
-                            thread.verification
-                        ),
+                        thread.body,
                         captcha=captcha,
                         raise_captcha_exception=True
                     )
@@ -282,10 +268,7 @@ def success(thread_id):
                     reddit_post = r.submit(
                         thread.subreddit,
                         thread.title,
-                        reddit_body(
-                            thread.body,
-                            thread.verification
-                        ),
+                        thread.body,
                         raise_captcha_exception=True
                     )
 
@@ -296,16 +279,16 @@ def success(thread_id):
                     captcha_id=e.response['captcha']
                 ))
             except praw.errors.APIException as e:
-                flash('There was an error with your AMA submission: ' +
+                flash('There was an error with your submission: ' +
                       str(e.message))
 
             except praw.errors.ClientException as e:
-                flash('There was an error with your AMA submission: ' +
+                flash('There was an error with your submission: ' +
                       str(e.message))
 
             except:
                 flash('Sorry, we could not create '
-                      'your AMA on reddit. Please try again.')
+                      'your post on reddit. Please try again.')
 
             if reddit_post is not None:
                 thread.submitted = True
@@ -315,7 +298,7 @@ def success(thread_id):
                 return render_template(
                     'success.html',
                     thread=thread,
-                    page_title="Your AMA has been submitted!"
+                    page_title="Your post has been submitted!"
                 )
 
             else:
@@ -329,7 +312,7 @@ def success(thread_id):
             return render_template(
                 'success.html',
                 thread=thread,
-                page_title="Your AMA has been submitted!"
+                page_title="Your post has been submitted!"
             )
     else:
         abort(404)
@@ -371,7 +354,7 @@ def latest_threads(pagenum):
     return render_template(
         'latest-threads.html',
         threads=threads,
-        page_title="Latest AMA's made with easyAMA"
+        page_title="Latest posts made with redditDrafts"
     )
 
 
@@ -387,7 +370,7 @@ def delete_thread(thread_id):
         if form.validate_on_submit():
             db.session.delete(thread)
             db.session.commit()
-            flash("Your AMA has been deleted.")
+            flash("Your post has been deleted.")
             return redirect(url_for(
                 'user',
             ))
@@ -396,7 +379,7 @@ def delete_thread(thread_id):
                 'delete-thread.html',
                 thread=thread,
                 form=form,
-                page_title="Delete AMA"
+                page_title="Delete Post"
             )
     else:
         return abort(404)

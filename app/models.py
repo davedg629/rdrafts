@@ -60,7 +60,6 @@ class Thread(db.Model):
     )
     title = db.Column(db.String, nullable=False)
     body = db.Column(db.String, nullable=False)
-    verification = db.Column(db.String, nullable=False)
     subreddit = db.Column(db.String, nullable=False)
 
     submitted = db.Column(db.Boolean, nullable=False, default=False)
