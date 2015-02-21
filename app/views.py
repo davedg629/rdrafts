@@ -95,7 +95,7 @@ def logout():
 def index():
     return render_template(
         'index.html',
-        page_title="Please read before using redditDrafts"
+        page_title="Please read before using rDrafts"
     )
 
 
@@ -354,7 +354,7 @@ def latest_threads(pagenum):
     return render_template(
         'latest-threads.html',
         threads=threads,
-        page_title="Latest posts made with redditDrafts"
+        page_title="Latest posts made with rDrafts"
     )
 
 

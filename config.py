@@ -32,7 +32,7 @@ else:
 
 # SQLALchemy database URI
 if os.environ.get('DATABASE_URL') is None:
-    DATABASE = 'redditdrafts.db'
+    DATABASE = 'rdrafts.db'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + \
         os.path.join(basedir, DATABASE) + \
         '?check_same_thread=False'
