@@ -393,12 +393,12 @@ def user():
         threads_not_submitted = db.session.query(Thread)\
             .filter_by(user_id=g.user.id)\
             .filter_by(submitted=False)\
-            .order_by(desc(Thread.date_posted))\
+            .order_by(Thread.date_posted.desc())\
             .all()
         threads_submitted = db.session.query(Thread)\
             .filter_by(user_id=g.user.id)\
             .filter_by(submitted=True)\
-            .order_by(desc(Thread.date_posted))\
+            .order_by(Thread.date_posted.desc())\
             .all()
         return render_template(
             'user.html',
