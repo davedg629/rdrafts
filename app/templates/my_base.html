@@ -55,7 +55,10 @@
             </li>
             {% if current_user.is_authenticated() %}
             <li>
-                <a href="{{ url_for('user') }}">My Account</a>
+                <a href="{{ url_for('create_thread') }}">New Post +</a>
+            </li>
+            <li>
+                <a href="{{ url_for('user') }}">My Posts</a>
             </li>
             <li>
                 <a href="{{ url_for('logout') }}">Logout</a>
