@@ -152,7 +152,7 @@ def create_thread():
 
     return render_template(
         'create-thread.html',
-        page_title="Create your post",
+        page_title="Create New Draft",
         form=form
     )
 
@@ -169,7 +169,7 @@ def preview(thread_id):
         return render_template(
             'preview.html',
             thread=thread,
-            page_title="Preview your post"
+            page_title="Draft Preview"
         )
     elif thread.submitted is True:
         return redirect(url_for(
@@ -218,7 +218,7 @@ def edit(thread_id):
         return render_template(
             'edit.html',
             form=form,
-            page_title="Edit your post"
+            page_title="Edit Draft"
         )
     elif thread.submitted is True:
         return redirect(url_for(
@@ -404,8 +404,7 @@ def user():
             'user.html',
             user=g.user,
             threads_not_submitted=threads_not_submitted,
-            threads_submitted=threads_submitted,
-            page_title="My Account"
+            threads_submitted=threads_submitted
         )
     else:
         return abort(404)

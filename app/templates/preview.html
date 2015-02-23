@@ -4,7 +4,7 @@
 
     {{super()}}
 
-    <p>Below is what your post will look like when it is submitted to <strong>/r/{{ thread.subreddit }}</strong>.</p>
+    <p>Below is what your draft will look like when it is submitted to <strong>/r/{{ thread.subreddit }}</strong>.</p>
 
     <div class="reddit-preview">
         
@@ -21,8 +21,8 @@
     </div>
 
     <div id="preview-edit" class="row">
-        <div class="col-sm-3"><p><a class="btn btn-default" href="{{ url_for('edit', thread_id=thread.id) }}">Edit Your Post</a></p></div>
-        <div class="col-sm-9 text-right"><p><strong>Share this preview:</strong> &nbsp; <input type="text" value="http://{{ config.SERVER_NAME }}{{ url_for('share', thread_id=thread.id) }}" /></p></div>
+        <div class="col-sm-3"><p><a class="btn btn-default" href="{{ url_for('edit', thread_id=thread.id) }}">Edit Draft</a></p></div>
+        <div class="col-sm-9 text-right"><p><strong>Share this draft:</strong> &nbsp; <input type="text" value="http://{{ config.SERVER_NAME }}{{ url_for('share', thread_id=thread.id) }}" /></p></div>
     </div>
 
     <div class="divider"></div>
@@ -36,12 +36,12 @@
         <p><strong>A few things before you submit:</strong></p>
 
         <ul>
-            <li>Your post is saved. If you are not ready right now, you can come back at any time to edit, preview, and submit your post.</li>
-            <li>Proofread your post copy before submitting. After submitting, you will not be able to edit the title of your post.</li>
+            <li>Your draft is saved. If you are not ready right now, you can come back at any time to edit, preview, and submit your draft.</li>
+            <li>Proofread your draft before submitting. After submitting, you will not be able to edit the title.</li>
             <li>Please respect the community you are engaging and remember they are human beings.</li>
         </ul>
 
-        <p class="text-center"><a class="btn btn-primary btn-shadow btn-featured" id="ama-submit-btn" href="{{ url_for('success', thread_id=thread.id) }}">Submit Your Post</a></p>
+        <p class="text-center"><a class="btn btn-primary btn-shadow btn-featured" id="ama-submit-btn" href="{{ url_for('success', thread_id=thread.id) }}">Submit Your Draft</a></p>
 
     </div>
 

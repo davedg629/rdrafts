@@ -4,35 +4,37 @@
 
     {{super()}}
 
-    <p><a class="btn btn-primary btn-lg" href="{{ url_for('create_thread') }}">Create a new post</a></p>
+    <h2 class="pull-left">My Drafts</h2>
+    
+    <div class="pull-right"><h2><a class="btn btn-primary" href="{{ url_for('create_thread') }}">Create New Draft +</a></h2></div>
 
-    {% if threads_not_submitted %}
     <div class="divider"></div>
 
-    <h3>Saved Posts</h3>
-
+    {% if threads_not_submitted %}
     <div class="listing">
         {% for thread in threads_not_submitted %}
         <div class="list-item{% if loop.last %} last{% endif %}">
             <p class="title"><strong><a href="{{ url_for('preview', thread_id=thread.id) }}">{{ thread.title }}</a></strong></p>
             <p class="meta">Subreddit: <a href="http://reddit.com/r/{{ thread.subreddit }}" target="_blank">/r/{{ thread.subreddit }}</a></p>
-            <p><a class="btn btn-sm btn-default" href="/preview/{{ thread.id }}">Continue Post</a> &nbsp; <a class="btn btn-sm btn-danger" href="{{ url_for('delete_thread', thread_id=thread.id) }}">Delete Post</a></p>
+            <p><a class="btn btn-sm btn-default" href="{{ url_for('edit', thread_id=thread.id) }}">Edit Draft</a> &nbsp; <a class="btn btn-sm btn-default" href="{{ url_for('preview', thread_id=thread.id) }}">Preview</a> &nbsp; <a class="btn btn-sm btn-danger" href="{{ url_for('delete_thread', thread_id=thread.id) }}">Delete</a></p>
         </div>
         {% endfor %}
     </div>
+    {% else %}
+    <p>You have no saved drafts. <a href="{{ url_for('create_thread') }}">Create a new draft</a>.</p>
     {% endif %}
 
     {% if threads_submitted %}
     <div class="divider"></div>
 
-    <h3>Submitted Posts</h3>
+    <h2>Submitted Drafts</h2>
 
     <div class="listing">
         {% for thread in threads_submitted %}
         <div class="list-item{% if loop.last %} last{% endif %}">
             <p class="title"><strong><a href="{{ thread.reddit_permalink }}" target="_blank">{{ thread.title }}</a></strong></p>
             <p class="meta">Subreddit: <a href="http://reddit.com/r/{{ thread.subreddit }}" target="_blank">/r/{{ thread.subreddit }}</a></p>
-            <p><a class="btn btn-sm btn-default" href="{{ thread.reddit_permalink }}" target="_blank">View post on reddit</a></p>
+            <p><a class="btn btn-sm btn-default" href="{{ thread.reddit_permalink }}" target="_blank">View on reddit</a></p>
         </div>
         {% endfor %}
     </div>
