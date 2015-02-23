@@ -190,7 +190,7 @@ def share(thread_id):
         return render_template(
             'share.html',
             thread=thread,
-            page_title="Reddit post preview"
+            page_title="Reddit draft preview"
         )
     else:
         abort(404)
