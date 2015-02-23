@@ -4,15 +4,13 @@
 
     {{super()}}
 
+    <a href="#" data-toggle="modal" data-target="#screen1"><img class="bordered-img pull-right" src="http://groupsrc.com/rdrafts/screen_create_thumb.png" alt="Create New Draft screenshot" /></a>
+
     <p><strong>What is rDrafts?</strong></p>
-    <p>rDrafts is a third party application that lets you draft a reddit post, preview it, share it with others, save it for later, and ultimately submit it to reddit. This application interfaces with reddit, but has no affiliation with reddit inc.</p>
-
-    <div class="divider"></div>
-
-    <p><strong>Why use rDrafts?</strong></p>
-    <p>rDrafts makes it easier to plan a reddit post ahead of time. You can create your draft, preview it, share it with others, save it, and then submit it when you are ready. No more drafting reddit posts in word processors. No more scrambling to setup and format your post right before you want to submit it.</p>
-
+    <p>rDrafts is a third party application that lets you draft a reddit post, preview it, share it with others, save it for later, and ultimately submit it to reddit. We created rDrafts to make it easier to plan a reddit post ahead of time such as AMAs, long-form text posts, announcements by moderators, and late night inspirations.</p>
     <p>You should not use rDrafts if you do not have prior experience submitting posts to reddit. If you are new to reddit, read our <a href="http://marketersguidetoreddit.com/beginners-guide-to-reddit-for-marketers/">Beginner's Guide to reddit</a>.</p>
+
+    <p>This application interfaces with reddit, but has no affiliation with reddit inc.</p>
 
     <div class="divider"></div>
 
@@ -31,5 +29,20 @@
         <p>We strongly encourage you to read everything above carefully. Ready? click the button below.</p>
         <p><a class="btn btn-large btn-primary btn-shadow" href="{{ url_for('login') }}">Get Started</a></p>
     </div>
+
+<!-- screenshot popup -->
+<div id="screen1" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Screenshot: Create New Draft form</h4>
+      </div>
+      <div class="modal-body">
+          <img class="img-responsive class" src="http://groupsrc.com/rdrafts/screen_create.png" alt="Create New Draft screenshot" />
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 {% endblock %}
