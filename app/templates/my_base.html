@@ -9,7 +9,7 @@
 {{super()}}
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="description" content="easyAMA makes reddit AMA's easy.">
+<meta name="description" content="rDrafts allows you to create a draft for a reddit post, preview it, and submit it.">
 
 {{fixes.ie8()}}
 
@@ -115,6 +115,7 @@
 $(document).ready(function($){
     $("a.btn-submit").one("click", function() {
         $(this).css('display', 'none');
+        $("a.btn-save").css('display', 'none');
         $(this).next().css('display', 'inline-block');
     });
     $("a.btn-loading").click(function(e) {
