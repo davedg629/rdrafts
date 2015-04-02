@@ -15,7 +15,7 @@
     </div>
     <div class="page-nav">
         {% if threads.has_prev %}<div class="prev"><a href="{{ url_for('latest_threads', pagenum=threads.prev_num) }}">&laquo; Newer posts</a></div>{% endif %}
-        {% if threads.has_next %}<div class="next"><a href="{{ url_for('latest_threads', pagenum=threads.next_num) }}">Older AMA's &raquo;</a></div>{% endif %}
+        {% if threads.has_next %}<div class="next"><a href="{{ url_for('latest_threads', pagenum=threads.next_num) }}">Older posts &raquo;</a></div>{% endif %}
         <div class="clear"></div>
     </div>
     {% else %}
