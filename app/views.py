@@ -409,17 +409,3 @@ def user():
         )
     else:
         return abort(404)
-
-
-# test view
-@app.route("/test/<int:thread_id>")
-@login_required
-def test(thread_id):
-    thread = Thread.query\
-        .filter_by(id=thread_id)\
-        .first()
-
-    if thread and thread.user_id == g.user.id:
-        return "Yay"
-    else:
-        return "None"
