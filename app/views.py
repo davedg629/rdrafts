@@ -200,10 +200,10 @@ def share(thread_id):
 @app.route("/edit/<int:thread_id>", methods=['GET', 'POST'])
 @login_required
 def edit(thread_id):
-    thread = db.session.query(Thread)\
+    thread = Thread.query\
         .filter_by(id=thread_id)\
         .first()
-    if ((thread and thread.user_id is g.user.id) or (g.user.role_id is 1)) \
+    if ((thread is not None and thread.user_id is g.user.id) or (g.user.role_id is 1)) \
             and thread.submitted is False:
         form = ThreadForm(obj=thread)
         if form.validate_on_submit():
