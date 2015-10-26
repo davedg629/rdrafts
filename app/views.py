@@ -389,6 +389,7 @@ def delete_thread(thread_id):
 @app.route('/user/')
 @login_required
 def user():
+    flash(g.user.id)
     if current_user.is_authenticated:
         threads_not_submitted = db.session.query(Thread)\
             .filter_by(user_id=g.user.id)\
