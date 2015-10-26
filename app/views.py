@@ -419,7 +419,7 @@ def test(thread_id):
         .filter_by(id=thread_id)\
         .first()
 
-    if thread and thread.user_id:
+    if thread.user_id == g.user.id:
         return "Yay"
     else:
         return "None"
