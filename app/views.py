@@ -418,7 +418,7 @@ def test():
     thread = Thread.query\
         .filter_by(id=498)\
         .first()
-    if thread:
-        return str(thread.id)
+    if thread and thread.user_id is g.user.id:
+        return "Yay"
     else:
         return "None"
