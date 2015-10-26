@@ -412,13 +412,14 @@ def user():
 
 
 # test view
-@app.route("/test")
+@app.route("/test/<int:thread_id>")
 @login_required
-def test():
+def test(thread_id):
     thread = Thread.query\
-        .filter_by(id=498)\
+        .filter_by(id=thread_id)\
         .first()
-    if thread and thread.user_id is g.user.id:
+
+    if thread and thread.user_id:
         return "Yay"
     else:
         return "None"
