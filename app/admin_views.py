@@ -7,7 +7,7 @@ from flask.ext.admin.contrib.sqla import ModelView
 
 class AuthMixin(object):
     def is_accessible(self):
-        if current_user.is_authenticated():
+        if current_user.is_authenticated:
             if current_user.role_id is 1:
                 return True
             else:
