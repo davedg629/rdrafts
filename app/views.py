@@ -204,7 +204,7 @@ def edit(thread_id):
         .filter_by(user_id=g.user.id)\
         .filter_by(id=thread_id)\
         .first()
-    if ((thread and thread.user_id == g.user.id) or (g.user.role_id == 1)) \
+    if ((thread and thread.user_id == g.user.id) or (g.user.role_id is 1)) \
             and thread.submitted is False:
         form = ThreadForm(obj=thread)
         if form.validate_on_submit():
