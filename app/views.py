@@ -165,13 +165,13 @@ def preview(thread_id):
         .filter_by(id=thread_id)\
         .first()
     if ((thread and thread.user_id == g.user.id) or (g.user.role_id == 1)) \
-            and thread.submitted == False:
+            and thread.submitted is False:
         return render_template(
             'preview.html',
             thread=thread,
             page_title="Draft Preview"
         )
-    elif thread.submitted == True:
+    elif thread.submitted is True:
         return redirect(url_for(
             'success',
             thread_id=thread.id
@@ -186,7 +186,7 @@ def share(thread_id):
     thread = db.session.query(Thread)\
         .filter_by(id=thread_id)\
         .first()
-    if thread and thread.submitted == False:
+    if thread and thread.submitted is False:
         return render_template(
             'share.html',
             thread=thread,
@@ -205,7 +205,7 @@ def edit(thread_id):
         .filter_by(id=thread_id)\
         .first()
     if ((thread and thread.user_id == g.user.id) or (g.user.role_id == 1)) \
-            and thread.submitted == False:
+            and thread.submitted is False:
         form = ThreadForm(obj=thread)
         if form.validate_on_submit():
             thread.title = form.title.data
@@ -221,7 +221,7 @@ def edit(thread_id):
             form=form,
             page_title="Edit Draft"
         )
-    elif thread.submitted == True:
+    elif thread.submitted is True:
         return redirect(url_for(
             'success',
             thread_id=thread.id
@@ -239,7 +239,7 @@ def success(thread_id):
         .first()
     if thread and thread.user_id == g.user.id:
 
-        if thread.submitted == False:
+        if thread.submitted is False:
 
             # post to reddit
             reddit_post = None
@@ -326,7 +326,7 @@ def captcha(thread_id):
     thread = db.session.query(Thread)\
         .filter_by(id=thread_id)\
         .first()
-    if thread and thread.user_id == g.user.id and thread.submitted == False:
+    if thread and thread.user_id == g.user.id and thread.submitted is False:
         form = CaptchaForm()
         if form.validate_on_submit():
             return redirect(url_for(
