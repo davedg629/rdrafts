@@ -51,6 +51,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
             <li>
+            <a href="{{ url_for('about') }}">About Us</a>
+            </li>
+            <li>
+            <a href="{{ url_for('other_apps') }}">More Reddit Apps</a>
+            </li>
+
+            <li>
                 <a href="{{ url_for('latest_threads') }}">Latest Posts</a>
             </li>
             {% if current_user.is_authenticated %}
@@ -101,7 +108,7 @@
 <div id="footer">
     <div class="container">
     {% block footer %}
-    <p>&copy; 2015 rDrafts, all rights reserved. rDrafts is a <a href="http://groupsrc.com" target="_blank">GroupSRC.com</a> project.</p>
+    <p>&copy; 2015 rDrafts, all rights reserved. rDrafts is a <a href="http://groupsrc.com" target="_blank">GroupSRC.com</a> project and is sponsored by <a href="http://marketersguidetoreddit.com" target="_blank">MarketersGuideToReddit.com</a>.</p>
     <p><strong>rDrafts is not affiliated with reddit inc.</strong></p>
     {% endblock %}
     </div>

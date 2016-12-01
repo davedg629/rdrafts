@@ -1,0 +1,21 @@
+{% extends "my_base.html" %}
+
+{% block page_content %}
+{{super()}}
+
+<p>rDrafts is one of a few apps created by <a href="{{url_for('about')}}">GroupSRC</a>. We've also created the following apps that make Reddit a little easier to use.</p>
+
+<h2>EasyAMA</h2>
+
+<p><a href="http://easyama.groupsrc.com" target="_blank">EasyAMA</a> is similar to rDrafts, except that it is specifically designed for AMAs. We created this app to give users a template for creating a successful AMA. The app walks the user through the AMA planning process and encourages them to submit an AMA that is informative, valuable, and verified.</p>
+
+<p><a href="http://easyama.groupsrc.com" target="_blank">Visit easyama.groupsrc.com</a></p>
+<hr />
+
+<h2>EasyUnsub</h2>
+
+<p><a href="http://easyunsub.groupsrc.com" target="_blank">EasyUnsub</a> is for redditors that want to quickly unsubscribe from multiple subreddits. A common use-case is when you have created a new account and want to quickly unsubscribe from the default subreddits..</p>
+
+<p><a href="http://easyunsub.groupsrc.com" target="_blank">Visit easyunsub.groupsrc.com</a></p>
+
+{% endblock %}
