@@ -16,7 +16,7 @@
         <div class="list-item{% if loop.last %} last{% endif %}">
             <p class="title"><strong><a href="{{ url_for('preview', thread_id=thread.id) }}">{{ thread.title }}</a></strong></p>
             <p class="meta">Subreddit: <a href="http://reddit.com/r/{{ thread.subreddit }}" target="_blank">/r/{{ thread.subreddit }}</a></p>
-            <p><a class="btn btn-sm btn-default" href="{{ url_for('edit', thread_id=thread.id) }}">Edit Draft</a> &nbsp; <a class="btn btn-sm btn-default" href="{{ url_for('preview', thread_id=thread.id) }}">Preview</a> &nbsp; <a class="btn btn-sm btn-danger" href="{{ url_for('delete_thread', thread_id=thread.id) }}">Delete</a></p>
+            <p><a class="btn btn-sm btn-default" href="{{ url_for('edit', thread_id=thread.id) }}">Edit Draft</a> &nbsp; <a class="btn btn-sm btn-default" href="{{ url_for('preview', thread_id=thread.id) }}">Preview</a> &nbsp; <a class="btn btn-sm btn-danger" href="{{ url_for('delete_thread', thread_id=thread.id) }}">Delete</a> &nbsp; <a class="btn btn-sm btn-info" href="{{ url_for('create_thread', template_id=thread.id) }}">Use as Template</a></p>
         </div>
         {% endfor %}
     </div>
@@ -34,7 +34,7 @@
         <div class="list-item{% if loop.last %} last{% endif %}">
             <p class="title"><strong><a href="{{ thread.reddit_permalink }}" target="_blank">{{ thread.title }}</a></strong></p>
             <p class="meta">Subreddit: <a href="http://reddit.com/r/{{ thread.subreddit }}" target="_blank">/r/{{ thread.subreddit }}</a></p>
-            <p><a class="btn btn-sm btn-default" href="{{ thread.reddit_permalink }}" target="_blank">View on reddit</a></p>
+            <p><a class="btn btn-sm btn-default" href="{{ thread.reddit_permalink }}" target="_blank">View on reddit</a> &nbsp; <a class="btn btn-sm btn-info" href="{{ url_for('create_thread', template_id=thread.id) }}">Use as Template</a></p>
         </div>
         {% endfor %}
     </div>

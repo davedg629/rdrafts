@@ -150,9 +150,19 @@ def login():
 
 # create thread
 @app.route("/create/", methods=['GET', 'POST'])
+@app.route("/create/<int:template_id>", methods=['GET', 'POST'])
 @login_required
-def create_thread():
-    form = ThreadForm()
+def create_thread(template_id=False):
+    if template_id is not False:
+        thread = db.session.query(Thread)\
+            .filter_by(id=template_id)\
+            .first()
+        if thread and thread.user_id == g.user.id:
+            form = ThreadForm(obj=thread)
+        else:
+            form = ThreadForm()
+    else:
+        form = ThreadForm()
     if form.validate_on_submit():
         new_thread = Thread(
             user_id=g.user.id,
