@@ -26,7 +26,7 @@ class ThreadForm(Form):
             InputRequired(),
             Length(
                 max=40000,
-                message="Description cannot be longer than 10,000 characters"
+                message="Description cannot be longer than 40,000 characters"
             )
         ]
     )
