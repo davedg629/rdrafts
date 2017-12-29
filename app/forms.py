@@ -25,7 +25,7 @@ class ThreadForm(Form):
         validators=[
             InputRequired(),
             Length(
-                max=10000,
+                max=40000,
                 message="Description cannot be longer than 10,000 characters"
             )
         ]
