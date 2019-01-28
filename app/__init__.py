@@ -1,10 +1,10 @@
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.bootstrap import Bootstrap
-from flask.ext.script import Manager
-from flask.ext.login import LoginManager
-from flask.ext.pagedown import PageDown
-from flask.ext.markdown import Markdown
+from flask_sqlalchemy import SQLAlchemy
+from flask_bootstrap import Bootstrap
+from flask_script import Manager
+from flask_login import LoginManager
+from flask_pagedown import PageDown
+from flaskext.markdown import Markdown
 
 app = Flask(__name__)
 app.config.from_object('config')
